@@ -1,0 +1,7 @@
+{
+  "name": "ion-dkis",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
