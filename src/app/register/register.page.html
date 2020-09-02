@@ -1,0 +1,44 @@
+<ion-content fullscreen="true" slot="fixed">
+  <div class="ion-padding background">
+    <div class="card">
+      <div class="ion-text-center ion-padding" (click)="backHome()">
+        <img src="assets/icon/logo.svg" [height]='80' [width]='100'>
+        <h4>Create Your Account</h4>
+      </div>
+      <div class="header">
+        <div class="avatar ion-text-center">
+          <img src="assets/icon/register.svg" [height]='50' [width]='100'>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <form #form="ngForm" (ngSubmit)="login(form)">
+        <div class="user-meta ion-text-center">
+          <div class="ion-padding">
+            <ion-item>
+              <ion-input name="name" type="text" placeholder="Username" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="password_confirmation" type="password" placeholder="Password again" ngModel required>
+              </ion-input>
+            </ion-item>
+          </div>
+          <div class="ion-padding">
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Sign Up</ion-button>
+          </div>
+        </div>
+      </form>
+      <div class="ion-text-center">
+        <a routerLink='/login'>
+          Sign in.</a>
+      </div>
+    </div>
+  </div>
+</ion-content>

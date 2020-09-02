@@ -1,0 +1,46 @@
+<ion-content class="content-color">
+  <ion-toolbar class="new-background-color">
+    <ion-col size="12">
+      <ion-button fill="clear" (click)="backHome()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col size="12">
+      <div class="ion-padding ion-text-center">
+        <img src="assets/icon/network.svg">
+        <h1>Pelaporan Jaringan</h1>
+      </div>
+    </ion-col>
+  </ion-toolbar>
+  <form #form="ngForm" (ngSubmit)="network(form)">
+    <ion-grid>
+      <ion-row classs="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="12" size-lg="12" size-xs="12">
+          <div class="ion-padding">
+            <ion-item>
+              <ion-input name="name" type="text" placeholder="Nama Lengkap" ngModel required></ion-input>
+            </ion-item> <br>
+            <ion-item>
+              <ion-input name="nip" type="text" placeholder="NIP" ngModel required></ion-input>
+            </ion-item> <br>
+            <ion-item>
+              <ion-input name="nama_SKPD" type="number" placeholder="SKPD" ngModel required></ion-input>
+            </ion-item> <br>
+            <ion-item>
+              <ion-input name="no_hp" type="number" placeholder="Nomor Telepon" ngModel required></ion-input>
+            </ion-item>
+            <ion-textarea ngModel name="deskripsi" type="text" placeholder="Keterengan .... " required #input>
+            </ion-textarea>
+            <ion-label position="stacked">Upload Foto(opsional)</ion-label>
+            <ion-input type="file" accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.rar,.zip"
+              id="upload" ngModel name="attachment" (change)="onFileSelect($event)">
+            </ion-input>
+          </div>
+          <div class="ion-padding ion-float-left">
+            <ion-button size="medium" type="submit" [disabled]="form.invalid">Konfirmasi</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-content fullscreen="true" slot="fixed">
+  <div class="ion-padding background">
+    <div class="card">
+      <div class="ion-text-center ion-padding" (click)="backHome()">
+        <img src="assets/icon/logo.svg" [height]='80' [width]='100'>
+        <h4>Login Your Account</h4>
+      </div>
+      <div class="header">
+        <div class="avatar ion-text-center">
+          <img src="assets/icon/users.svg" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <form #form="ngForm" (ngSubmit)="login(form)">
+        <div class="user-meta ion-text-center">
+          <div class="ion-padding">
+            <ion-item>
+              <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+            </ion-item>
+          </div>
+          <div class="ion-padding">
+            <div class="ion-float-right">
+              <a (click)="forgotPassword()">
+                Forgot Password</a>
+            </div>
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Sign In</ion-button>
+          </div>
+        </div>
+      </form>
+      <div class="ion-text-center">
+        You need account? <a routerLink='/register'>
+          Sign up.</a>
+      </div>
+    </div>
+  </div>
+</ion-content>
