@@ -18,19 +18,22 @@
         <ion-col class="ion-align-self-center" size-md="12" size-lg="12" size-xs="12">
           <div class="ion-padding">
             <ion-item>
-              <ion-input name="name" type="text" placeholder="Nama Lengkap" ngModel required></ion-input>
+              <ion-input name="nama" type="text" placeholder="Nama Lengkap" [(ngModel)]="nama" required readonly></ion-input>
             </ion-item> <br>
             <ion-item>
-              <ion-input name="nip" type="text" placeholder="NIP" ngModel required></ion-input>
+              <ion-input name="nip" type="text" placeholder="NIP" [(ngModel)]="nip" required readonly></ion-input>
             </ion-item> <br>
             <ion-item>
-              <ion-input name="no_hp" type="number" placeholder="Nomor Telepon" ngModel required></ion-input>
+              <ion-input name="no_hp" type="number" placeholder="Nomor Telepon" [(ngModel)]="no_hp" required>
+              </ion-input>
             </ion-item>
-            <ion-textarea ngModel name="deskripsi" type="text" placeholder="Keterengan .... " required #input>
+            <ion-textarea name="deskripsi" [(ngModel)]="deskripsi" type="text" placeholder="Keterengan .... "
+              required #input>
             </ion-textarea>
             <ion-label position="stacked">Surat permohonan pembuatan aplikasi</ion-label>
-            <ion-input type="file" accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.rar,.zip" id="upload"
-              ngModel name="attachment" (change)="onFileSelect($event)">
+            <ion-input name="document"  type="file"
+              accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.rar,.zip" id="upload"
+              [(ngModel)]="document" (change)="onFileSelect($event)" required>
             </ion-input>
           </div>
           <div class="ion-padding ion-float-left">

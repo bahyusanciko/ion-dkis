@@ -1,9 +1,30 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
+  <ion-toolbar class="nav">
+    <ion-button fill="clear" (click)="backHome()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+    <ion-label>Profile</ion-label>
+    <ion-button fill="clear" slot="end" color="danger" (click)="logout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen="true" slot="fixed" class="background">
+  <div class="card">
+    <div class="header">
+      <div class="avatar">
+        <img src="http://woit.sabaindomedika.com/saba-ops/public/image/profile/user.png" alt="">
+      </div>
+    </div>
+  </div>
 
+  <div class="card-body">
+    <div class="user-meta ion-text-center">
+      <h3 class="playername">{{ profile?.nama}}</h3>
+      <h5 class="country">{{ profile?.nip }}</h5>
+      <h5 class="country">{{ profile?.email }}</h5>
+    </div>
+    <ion-button expand="full" color="secondary" (click)="viewUpdate()">Ubah Profile</ion-button>
+  </div>
 </ion-content>

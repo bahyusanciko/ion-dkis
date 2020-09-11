@@ -1,6 +1,11 @@
 .background {
-    background: #C9D8FE;
+    --background: #C9D8FE;
 }
+
+.nav {
+    --background: #0547AA;
+}
+
 .card {
     margin: 0 auto;
 
@@ -9,7 +14,7 @@
 
         .avatar {
             width: 80px;
-            height: 70px;
+            height: 30px;
             position: relative;
             margin: 0 auto;
 
@@ -27,7 +32,7 @@
 .card-body {
     background-color: #2692AA;
     padding: 30px;
-    height: calc(100vh - (200px + 56px));
+    height: calc(100vh - (180px + 10px));
     overflow: hidden;
 
     .user-meta {
@@ -47,3 +52,4 @@
         }
     }
 }
+

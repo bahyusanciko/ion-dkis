@@ -7,34 +7,76 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="background">
-  <div>
-    <ion-col size="12">
-      <div class="ion-text-center ion-padding">
-        <img src="assets/icon/logo.svg" [height]='80' [width]='100'>
-      </div>
-    </ion-col>
-    <ion-col size="12">
-      <ion-card>
-        <ion-card-header>
-          <ion-card-subtitle>Semua Laporan</ion-card-subtitle>
-        </ion-card-header>
+   <ion-grid>
+     <ion-row>
+       <ion-col size="12">
+         <div class="ion-text-center ion-padding">
+           <img src="assets/icon/logo.svg" [height]='80' [width]='100'>
+         </div>
+       </ion-col>
+       <ion-col size="12">
+         <ion-card>
+           <ion-card-content>
+             <div class="ion-text-center ion-padding">
+               <form #form="ngForm" (ngSubmit)="statusReport(form)">
+                 <ion-label>Pilih Laporan</ion-label>
+                 <ion-select interface="action-sheet" name="jenis_pengajuan" ngModel required>
+                   <ion-select-option>Layanan Lupa Password</ion-select-option>
+                   <ion-select-option>Layanan Pengaduan Jaringan</ion-select-option>
+                   <ion-select-option>Pengajuan Email</ion-select-option>
+                   <ion-select-option>Pengajuan Cloud</ion-select-option>
+                   <ion-select-option>Pengajuan Layanan PSE</ion-select-option>
+                   <ion-select-option>Pengajuan Layanan PSE</ion-select-option>
+                 </ion-select>
+               </form>
+             </div>
+           </ion-card-content>
+         </ion-card>
+       </ion-col>
+       <ion-col size="12">
+         <ion-card>
+           <ion-list class="ion-padding">
+             <ion-list-header>
+               <ion-label> Semua Laporan : {{laporanuser?.totalLaporan}}</ion-label>
+               <ion-note slot="end" color="primary">{{laporanuser?.totalLaporan}}</ion-note>
+             </ion-list-header>
+             <ion-item *ngFor="let item of laporanuser?.data?.cLaporans">
+               <ion-label> Laporan {{item.value}}: </ion-label>
+               <ion-note slot="end" color="primary">{{item.count}}</ion-note>
+             </ion-item>
+           </ion-list>
+         </ion-card>
+       </ion-col>
+       <ion-col size="12">
 
-        <ion-card-content>
-          <div class="ion-text-center ion-padding">
-            <form #form="ngForm" (ngSubmit)="statusReport(form)">
-              <ion-label>Pilih Laporan</ion-label>
-              <ion-select interface="action-sheet" name="jenis_pengajuan" ngModel required>
-                <ion-select-option>Perbaikan Aplikasi IT</ion-select-option>
-                <ion-select-option>Laporan dalam proses</ion-select-option>
-                <ion-select-option>Laporan Selesai</ion-select-option>
-                <ion-select-option>Laporan Tertolak</ion-select-option>
-              </ion-select>
-            </form>
-          </div>
-        </ion-card-content>
-      </ion-card>
+          <ion-searchbar placeholder="Cari Pengajuan" [(ngModel)]="term" animated="true"></ion-searchbar>
 
-
-    </ion-col>
-  </div>
+       </ion-col>
+        <ion-col size="12" size-sm="12" size-md="12" size-lg="4"
+          *ngFor="let item of laporanuser?.data?.laporans | filter:term">
+          <ion-card>
+            <ion-item>
+              <ion-label>
+                <p class="ion-text-nowrap">{{ item.jenis_pengajuan }}
+                  - [TCT-{{item.id}}]
+                </p>
+              </ion-label>
+              <ion-button slot="end" size="small" color="dark">{{item.status}}</ion-button>
+            </ion-item>
+            <ion-card-content>
+              <p>
+                FeedBack : {{item.feedback}}
+              </p>
+              <p>
+                Tanggal Pengajuan : {{item.tanggal_pengajuan }}
+              </p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+            <ion-col size="12" *ngIf="laporanuser?.data?.laporans.length == 0">
+              <!-- <img src="assets/icon/inbox-zero.svg" style="width:100%" /> -->
+              <h1>Tidak Ada Data Pengajuan</h1>
+            </ion-col>
+     </ion-row>
+   </ion-grid>
 </ion-content>

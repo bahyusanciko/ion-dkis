@@ -1,14 +1,14 @@
 <ion-content class="content-color">
   <ion-toolbar class="new-background-color">
     <ion-col size="12">
-      <ion-button fill="clear" class="ion-float-left" (click)="backHome()">
+      <ion-button fill="clear" (click)="backHome()">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-col>
     <ion-col size="12">
       <div class="ion-padding ion-text-center">
-        <img src="assets/icon/apps.svg">
-        <h1>Pengajuan Pembuatan Aplikasi</h1>
+        <img src="assets/icon/subdomain.svg">
+        <h1>Pembuatan Sub Domain</h1>
       </div>
     </ion-col>
   </ion-toolbar>
@@ -18,32 +18,35 @@
         <ion-col class="ion-align-self-center" size-md="12" size-lg="12" size-xs="12">
           <div class="ion-padding">
             <ion-item>
-              <ion-input name="name" type="text" placeholder="Nama Lengkap" ngModel required></ion-input>
-            </ion-item> <br>
-            <ion-item>
-              <ion-input name="nip" type="text" placeholder="NIP" ngModel required></ion-input>
-            </ion-item> <br>
-            <ion-item>
-              <ion-input name="no_hp" type="number" placeholder="Nomor Telepon" ngModel required></ion-input>
-            </ion-item><br>
-            <ion-item>
-              <ion-input name="email_domain" type="text" placeholder="Email Pejabat Subdomain" ngModel required>
+              <ion-input name="nama" type="text" placeholder="Nama Lengkap" [(ngModel)]="nama" required readonly>
               </ion-input>
             </ion-item> <br>
-            <ion-textarea ngModel name="deskripsi" type="text" placeholder="Keterengan .... " required #input>
-            </ion-textarea>
+            <ion-item>
+              <ion-input name="nip" type="text" placeholder="NIP" [(ngModel)]="nip" required readonly></ion-input>
+            </ion-item> <br>
+            <ion-item>
+              <ion-input name="no_hp" type="number" placeholder="Nomor Telepon" [(ngModel)]="no_hp" required>
+              </ion-input>
+            </ion-item> <br>
+            <ion-item>
+              <ion-input name="email_domain" type="text" placeholder="Email Pejabat Subdomain"
+                [(ngModel)]="email_domain"
+                required>
+              </ion-input>
+            </ion-item> <br>
             <ion-label position="stacked">Surat pengajuan nama sub-domain (foto/pdf)</ion-label>
             <ion-input type="file" accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.rar,.zip" id="upload"
-              ngModel name="surat_pengajuan" (change)="onFileSelect($event)">
+               [(ngModel)]="surat_pengajuan" name="surat_pengajuan" (change)="onFileSelect($event,'surat_pengajuan')"
+               required>
             </ion-input>
             <ion-label position="stacked">Surat tugas sebagai pejabat nama sub-domain</ion-label>
             <ion-input type="file" accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.rar,.zip" id="upload"
-              ngModel name="surat_tugas" (change)="onFileSelect($event)">
+               [(ngModel)]="surat_tugas" name="surat_tugas" (change)="onFileSelect($event,'surat_tugas')" required>
             </ion-input>
             <ion-label position="stacked">KPE/Kartu Pegawai Negeri pejabat nama
               sub-domain</ion-label>
             <ion-input type="file" accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.rar,.zip" id="upload"
-              ngModel name="surat_kpe" (change)="onFileSelect($event)">
+               [(ngModel)]="surat_kpe" name="surat_kpe" (change)="onFileSelect($event,'surat_kpe')" required>
             </ion-input>
           </div>
           <div class="ion-padding ion-float-left">

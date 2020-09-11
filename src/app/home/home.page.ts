@@ -22,11 +22,12 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.storage.get("token").then((res) => {
-      if (res === null) {
-        this.token =  true;
+      if (res == null) {
+        this.token =  false;
       } else {
-        this.token = false;
+        this.token = true;
       }
+      console.log(this.token);
     });
   }
 
@@ -34,7 +35,7 @@ export class HomePage implements OnInit {
     if(this.token){
       this.navCntrl.navigateRoot(type);
     }else{
-      this.navCntrl.navigateRoot('login');
+      this.navCntrl.navigateRoot(`login/${type}`);
     }
   }
 

@@ -21,19 +21,20 @@
              <p>Untuk layanan PSE, silahkan download dan lengkapi formulir berikut. Setelah itu isi form dibawah dan
                upload formulir PSE yang sudah dilengkapi.</p>
             <p><b>Klik untuk download formulir</b></p>
-             <ion-item>
-               <ion-input name="name" type="text" placeholder="Nama Lengkap" ngModel required></ion-input>
-             </ion-item> <br>
-             <ion-item>
-               <ion-input name="nip" type="text" placeholder="NIP" ngModel required></ion-input>
-             </ion-item> <br>
-             <ion-item>
-               <ion-input name="no_hp" type="number" placeholder="Nomor Telepon" ngModel required></ion-input>
-             </ion-item>
-
+            <ion-item>
+              <ion-input name="nama" type="text" placeholder="Nama Lengkap" [(ngModel)]="nama" required readonly>
+              </ion-input>
+            </ion-item> <br>
+            <ion-item>
+              <ion-input name="nip" type="text" placeholder="NIP" [(ngModel)]="nip" required readonly></ion-input>
+            </ion-item> <br>
+            <ion-item>
+              <ion-input name="no_hp" type="number" placeholder="Nomor Telepon" [(ngModel)]="no_hp" required>
+              </ion-input>
+            </ion-item> <br>
              <ion-label position="stacked">Formulir PSE yang sudah dilengkapi</ion-label>
              <ion-input type="file" accept=".xlsx,.xls,image/*,.doc, .docx,.ppt, .pptx,.txt,.pdf,.rar,.zip" id="upload"
-               ngModel name="attachment" (change)="onFileSelect($event)">
+               [(ngModel)]="document" name="document" (change)="onFileSelect($event)" required>
              </ion-input>
            </div>
           <div class="ion-padding ion-float-left">

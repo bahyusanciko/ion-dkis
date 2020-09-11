@@ -1,54 +1,42 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import {
-  ModalController,
-  AlertController,
-  LoadingController,
-} from "@ionic/angular";
-import { AuthService } from "../../auth/auth.service";
+import { ModalController } from "@ionic/angular";
+import { AlertController, LoadingController } from "@ionic/angular";
+import { AuthService } from "../../../auth/auth.service";
 
 @Component({
-  selector: "app-forgot",
-  templateUrl: "./forgot.page.html",
-  styleUrls: ["./forgot.page.scss"],
+  selector: "app-password",
+  templateUrl: "./password.page.html",
+  styleUrls: ["./password.page.scss"],
 })
-export class ForgotPage implements OnInit {
+export class PasswordPage implements OnInit {
   loading: any;
   response: any;
-  email: string;
 
   constructor(
     private modalController: ModalController,
     private loadingController: LoadingController,
     public alertController: AlertController,
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) {}
 
   ngOnInit() {}
 
-  async closeModal() {
-    await this.modalController.dismiss();
-  }
-
-  async forgotPassword(form) {
+  async changePassword(form) {
     this.loading = await this.loadingController.create({
       message: "Loading data from api",
     });
-
+    let massage = "";
+    let error = "";
     this.authService
-      .forgotPassword(form.value)
+      .changePassword(form.value)
       .then((res) => {
         this.loading.dismiss();
-        console.log(res);
-        let massage = "";
-        let error = "";
-        if (res.status == 200) {
-          this.email = "";
+        if (res.status === 200) {
           this.response = JSON.parse(res.data);
-          this.alert("info", this.response.message);
-          this.router.navigateByUrl("");
+          this.alert("Success", this.response.message);
+          this.closeModal();
         } else {
+          this.loading.dismiss();
           this.response = JSON.parse(res.error);
           for (error in this.response.message) {
             massage += this.response.message[error].join("\n") + "\n ";
@@ -58,10 +46,17 @@ export class ForgotPage implements OnInit {
       })
       .catch((err) => {
         this.loading.dismiss();
-        this.alert("error", err.status);
-        this.router.navigateByUrl("");
+        this.response = JSON.parse(err.error);
+        for (error in this.response.message) {
+          massage += this.response.message[error].join("\n") + "\n ";
+        }
+        this.alert("Error", massage);
       });
     this.loading.present();
+  }
+  
+  async closeModal() {
+    await this.modalController.dismiss();
   }
 
   async alert(status, ress) {

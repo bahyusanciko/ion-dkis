@@ -3,9 +3,7 @@ import {
   ModalController,
   AlertController,
   LoadingController,
-  IonRouterOutlet,
-  Platform,
-} from "@ionic/angular";
+ } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { AuthService } from "../../auth/auth.service";
 
@@ -15,21 +13,36 @@ import { AuthService } from "../../auth/auth.service";
   styleUrls: ["./statusreport.page.scss"],
 })
 export class StatusreportPage implements OnInit {
+  laporanuser: any;
+  term: any;
   constructor(
     private authService: AuthService,
     private router: Router,
     private modalController: ModalController,
     public alertController: AlertController,
     private loadingController: LoadingController,
-    public platform: Platform
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getlaporanuser();
+  }
 
   backHome() {
     this.router.navigateByUrl(`/home`);
   }
 
   statusReport(form) {}
-  
+
+  async getlaporanuser() {
+    this.authService
+      .getlaporanuser()
+      .then((res) => {
+        this.laporanuser = JSON.parse(res.data);
+        console.log(this.laporanuser);
+        return this.laporanuser;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 }

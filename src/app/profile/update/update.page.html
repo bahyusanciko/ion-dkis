@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar class="nav">
+    <ion-buttons slot="start" (click)="backHome()" class="ion-padding">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-button fill="clear" size="small" slot="end" color="dark" (click)="changePassword()">
+      <ion-icon name="create-outline"></ion-icon>
+      <ion-label>Ubah Kata Sandi</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-card>
+    <form #form="ngForm" (ngSubmit)="updateProfile(form)">
+      <ion-grid>
+        <ion-row classs="ion-justify-content-center">
+          <ion-col class="ion-align-self-center" size-md="12" size-lg="12" size-xs="12">
+            <div class="ion-padding">
+              <ion-item>
+                <ion-input type="text" placeholder="Masukan Nama" ngModel name="name" required>
+                </ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input type="number" placeholder="Masukan Nomor Telepon" ngModel name="phone_number" required>
+                </ion-input>
+              </ion-item>
+            </div>
+            <div class="ion-padding">
+              <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Ubah Profile</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-card>
+</ion-content>

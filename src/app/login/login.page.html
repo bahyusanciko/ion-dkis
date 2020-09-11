@@ -1,11 +1,17 @@
-<ion-content fullscreen="true" slot="fixed">
-  <div class="ion-padding background">
+<ion-header>
+  <ion-toolbar class="nav">
+    <ion-buttons slot="start" (click)="backHome()" class="ion-padding">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
+    <ion-title>Daftar Akun</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" slot="fixed" class="background">
+  <div class="ion-padding">
     <div class="card">
-      <div class="ion-text-center ion-padding" (click)="backHome()">
-        <img src="assets/icon/logo.svg" [height]='80' [width]='100'>
-        <h4>Login Your Account</h4>
-      </div>
       <div class="header">
+        <h4 class="ion-text-center">Masuk Layanan</h4>
         <div class="avatar ion-text-center">
           <img src="assets/icon/users.svg" alt="">
         </div>
@@ -17,25 +23,26 @@
         <div class="user-meta ion-text-center">
           <div class="ion-padding">
             <ion-item>
-              <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+              <ion-input name="nip" type="text" placeholder="Masukan NIP" ngModel required></ion-input>
             </ion-item>
             <ion-item>
               <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
             </ion-item>
-          </div>
-          <div class="ion-padding">
             <div class="ion-float-right">
-              <a (click)="forgotPassword()">
-                Forgot Password</a>
+              <p (click)="forgotPassword()">
+                Lupa Password</p>
             </div>
-            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Sign In</ion-button>
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Masuk</ion-button>
+            <br>
           </div>
+              <p class="ion-text-center" (click)="register()" >
+                Daftar</p>
         </div>
       </form>
-      <div class="ion-text-center">
-        You need account? <a routerLink='/register'>
-          Sign up.</a>
-      </div>
+    <div class="ion-text-center">
+      <img src="assets/icon/logo.svg">
+
+    </div>
     </div>
   </div>
 </ion-content>
